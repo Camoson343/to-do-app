@@ -1,14 +1,9 @@
-window.onload = function() {
-   alert("The window has loaded!");
-   onReady();
- };
-
  function onReady() {
    const addToDoForm = document.getElementById('addToDoForm');
    const newToDoText = document.getElementById('newToDoText');
    const toDoList = document.getElementById('toDoList');
 
-   addToDoForm.addEventListner('submit', () => {
+   addToDoForm.addEventListener('submit', (event) => {
      event.preventDefault();
 
      // get the text
@@ -35,9 +30,20 @@ window.onload = function() {
      //empty the input
      newToDoText.value = '';
 
+     let deleteButton = document.createElement('button')
+     deleteButton.textContent = 'delete'
+
+     newLi.appendChild(deleteButton)
+
+     deleteButton.addEventListener('click', () => {
+      newLi.parentNode.removeChild(newLi)
      });
+
+
+     });
+
  }
 
  window.onload = function() {
-
+ onReady();
  }

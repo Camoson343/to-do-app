@@ -1,49 +1,46 @@
- function onReady() {
-   const addToDoForm = document.getElementById('addToDoForm');
-   const newToDoText = document.getElementById('newToDoText');
-   const toDoList = document.getElementById('toDoList');
+function onReady() {
+  let toDos = [];
+  const addToDoForm = document.getElementById('addNewToDoForm')
+  const newToDoText = document.getElementById('newToDoText');
+  const toDoList = document.getElementById('toDoList');
+function createNewToDo(){
+  if (!newToDoText.value) { return; }
 
-   addToDoForm.addEventListener('submit', (event) => {
-     event.preventDefault();
+  toDos.push({
+    title: newToDoText.value,
+    complete: false
+  });
 
-     // get the text
-     let title = newToDoText.value;
+  addToDoForm.addEventListener('submit', event => {
+    event.preventDefault();
+    createNewToDo();
+    newToDoText.vaule = '';
+  });
 
-     // create a new li
-     let newLi = document.createElement('li');
+  renderTheUI();
+}
 
-     // create a new input
-     let checkbox = document.createElement('input');
+function renderTheUI(){
+  const toDoList = document.getElementById('toDoList');
 
-     // set the input's type to checkbox
-     checkbox.type ="checkbox";
+  toDoList.textContent = '';
 
-     // set the title
-     newLi.textContent = title;
+  toDos.forEach(function(toDo){
+    const newToDo = document.createElement('li');
 
-     // attach the checkbox to the li
-     newLi.appendChild(checkbox);
+       const checkbox = document.createElement('input');
+       checkbox.type = "checkbox";
 
-     // attach the li to the ul
-     toDoList.appendChild(newLi);
+       const title = document.createElement('span');
+       title.textContent = toDo.title;
 
-     //empty the input
-     newToDoText.value = '';
+       toDoList.appendChild(newLi);
+       newLi.appendChild(checkbox);
 
-     let deleteButton = document.createElement('button')
-     deleteButton.textContent = 'delete'
+  });
+}
+}
 
-     newLi.appendChild(deleteButton)
-
-     deleteButton.addEventListener('click', () => {
-      newLi.parentNode.removeChild(newLi)
-     });
-
-
-     });
-
- }
-
- window.onload = function() {
- onReady();
- }
+window.onload = function() {
+  onReady();
+};

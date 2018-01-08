@@ -13,7 +13,6 @@ function onReady() {
       complete: false,
       id: id++
     });
-
     newToDoText.value = '';
 
     renderTheUI();

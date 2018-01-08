@@ -1,7 +1,7 @@
 function onReady() {
   let toDos = [];
   let id = 0;
-  const addToDoForm = document.getElementById('addToDoForm')
+  const addToDoForm = document.getElementById('addToDoForm');
   const newToDoText = document.getElementById('newToDoText');
   const newToDo = document.createElement('li');
 
@@ -33,7 +33,7 @@ function onReady() {
       toDoList.appendChild(newLi);
       newLi.appendChild(checkbox);
 
-      let deleteButton = document.createElement('button')
+      let deleteButton = document.createElement('button');
       deleteButton.textContent = 'delete'
 
       newLi.appendChild(deleteButton)
@@ -61,3 +61,4 @@ function onReady() {
 window.onload = function() {
   onReady();
 };
+}

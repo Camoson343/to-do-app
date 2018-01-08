@@ -53,11 +53,9 @@ function onReady() {
     newToDoText.value = '';
   });
 
-  renderTheUI();
-
   function deleteToDo(id){
-    toDos.filter[toDos = toDos.filter(item => item.id !==id)]
-  }
+    toDos = toDos.filter(item => item.id !==id)
+      renderTheUI();
 }
 
 window.onload = function() {

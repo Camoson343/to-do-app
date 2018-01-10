@@ -58,7 +58,7 @@ function onReady() {
       renderTheUI();
 }
 
+}
 window.onload = function() {
   onReady();
 };
-}
